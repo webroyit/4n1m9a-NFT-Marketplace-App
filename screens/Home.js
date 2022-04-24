@@ -7,7 +7,7 @@ import { HomeHeader, NFTCard, FousedStatusBar } from '../components';
 const Home = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <FousedStatusBar />
+      <FousedStatusBar background={COLORS.primary} />
       <HomeHeader />
       <NFTCard />
     </SafeAreaView>
