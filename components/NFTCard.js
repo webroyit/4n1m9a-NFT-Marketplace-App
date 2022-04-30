@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 
 import { COLORS, SIZES, SHADOWS, assets } from '../constants';
-import { CircleButton } from './Button';
+import { CircleButton, RectButton } from './Button';
 import { SubInfo, EthPrice, NFTTitle } from './SubInfo';
 
 const NFTCard = ({ data }) => {
@@ -49,6 +49,10 @@ const NFTCard = ({ data }) => {
             alignItems: 'center'
           }}>
             <EthPrice price={data.price} />
+            <RectButton
+              minWidth={120}
+              fontSize={SIZES.font}
+              handlePress={() => navigation.navigate("Details", { data })} />
         </View>
       </View>
     </View>
