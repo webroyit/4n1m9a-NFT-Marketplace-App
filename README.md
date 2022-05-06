@@ -7,3 +7,4 @@
 - `rnfe` in VSC to create template codes for react-native
 -  `TouchableOpacity` is a button
 - `handlePress={() => navigation.navigate("Details", { data })}` you can pass data to another screen
+- `navigation.goBack()` to go back page

@@ -1,7 +1,27 @@
 import { View, Text, SafeAreaView, Image, StatusBar, FlatList } from 'react-native';
-
+import React from 'react';
 import { COLORS, SIZES, SHADOWS, FONTS, assets } from '../constants';
 import { CircleButton, RectButton, SubInfo, FousedStatusBar, DetailsDesc, DetailsBid } from '../components';
+
+// StatusBar is not the same for all devices
+
+const DetailsHeader = ({ data, navigation }) => (
+  <View style={{ width: '100%', height: 373}}>
+    <Image
+      source={data.image}
+      resizeMode='cover'
+      style={{ width: '100%', height: '100%'}} />
+    <CircleButton
+      imgUrl={assets.left}
+      handlePress={() => navigation.goBack()}
+      left={15}
+      top={StatusBar.currentHeight + 10} />
+    <CircleButton
+      imgUrl={assets.heart}
+      right={15}
+      top={StatusBar.currentHeight + 10} />
+  </View>
+)
 
 //  route, navigation come from Home.js Details
 const Details = ({ route, navigation }) => {
@@ -32,7 +52,12 @@ const Details = ({ route, navigation }) => {
         renderItem={({ item }) => <DetailsBid bid={item} /> }
         keyExtractor={(item) => item.id}
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingBottom: SIZES.extraLarge * 3}} />
+        contentContainerStyle={{ paddingBottom: SIZES.extraLarge * 3}}
+        ListHeaderComponent={() => (
+          <React.Fragment>
+            <DetailsHeader data={data} navigation={navigation} />
+          </React.Fragment>
+        )} />
     </SafeAreaView>
   )
 }
